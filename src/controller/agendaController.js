@@ -38,7 +38,16 @@ router.post('',
 
 //Get all the agenda items
 router.get('', async (req, res) => {
-    return res.send("Agenda")
+    try {
+        const agendas = await Agenda.find().lean().exec();
+
+        return res.status(200).send(agendas)
+
+    } catch (err) {
+        return res.status(500).send({ error: "Something went wrong" })
+
+    }
+
 })
 
 ///Update a particular  agenda items
