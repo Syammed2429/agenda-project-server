@@ -49,6 +49,7 @@ router.get('', async (req, res) => {
 
         const agendas = await Agenda.find().limit(size).skip(offSet).lean().exec();
 
+        //Calculating the total agenda items and pages
         const totalAgendas = await Agenda.find().countDocuments().lean().exec();
         const totalPages = Math.ceil(totalAgendas / size)
 
