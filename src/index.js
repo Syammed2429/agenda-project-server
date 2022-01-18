@@ -19,6 +19,9 @@ app.use(cors());
 //API Points
 app.use('/agenda', agendaController)
 
+app.get("/", (req, res) => {
+    return res.status(200).send("Welcome to the agenda API ")
+})
 //export the app and port 
 module.exports = {
     app,
