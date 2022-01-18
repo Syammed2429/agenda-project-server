@@ -19,4 +19,4 @@ const agendaSchema = new mongoose.Schema({
 const Agenda = mongoose.model('agenda', agendaSchema);
 
 //exporting the model
-modules.exports = Agenda;
+module.exports = Agenda;
