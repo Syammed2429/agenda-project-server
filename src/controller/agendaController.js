@@ -44,14 +44,24 @@ router.get('', async (req, res) => {
         return res.status(200).send(agendas)
 
     } catch (err) {
-        return res.status(500).send({ error: "Something went wrong" })
+        return res.status(500).send({ error: "Cannot get agenda items" })
 
     }
 
 })
 
 ///Update a particular  agenda items
+router.patch('/:id', async (req, res) => {
+    try {
+        const agenda = await Agenda.findByIdAndUpdate(req.params.id, req.body, { new: true }).lean().exec();
 
+        return res.status(202).send(agenda)
+
+    } catch (err) {
+        return res.status(500).send({ error: "Unable to update agenda item" })
+
+    }
+})
 //Delete a particular agenda item
 
 
