@@ -63,6 +63,17 @@ router.patch('/:id', async (req, res) => {
     }
 })
 //Delete a particular agenda item
+router.delete('/:id', async (req, res) => {
+    try {
+        const agenda = await Agenda.findByIdAndDelete(req.params.id).lean().exec();
+
+        return res.status(202).send(agenda)
+
+    } catch (err) {
+        return res.status(500).send({ error: "Unable to delete an agenda item" })
+
+    }
+})
 
 
 //exporting the module
