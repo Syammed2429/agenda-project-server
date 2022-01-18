@@ -39,9 +39,20 @@ router.post('',
 //Get all the agenda items
 router.get('', async (req, res) => {
     try {
-        const agendas = await Agenda.find().lean().exec();
+        //pagination
+        const page = +req.query.page || 1;
+        console.log('page:', page)
+        const size = +req.query.size || 10;
+        console.log('size:', size)
+        const offSet = (page - 1) * size;
 
-        return res.status(200).send(agendas)
+
+        const agendas = await Agenda.find().limit(size).skip(offSet).lean().exec();
+
+        const totalAgendas = await Agenda.find().countDocuments().lean().exec();
+        const totalPages = Math.ceil(totalAgendas / size)
+
+        return res.status(200).send(agendas, totalPages)
 
     } catch (err) {
         return res.status(500).send({ error: "Cannot get agenda items" })
