@@ -18,16 +18,21 @@ router.post('',
     body("date").notEmpty().withMessage("Date should not be empty"),
 
     async (req, res) => {
-        const errors = validationResult(req);
+        try {
 
-        if (!errors.isEmpty()) {
-            return res.status(401).send(errors.array())
+            const errors = validationResult(req);
+
+            if (!errors.isEmpty()) {
+                return res.status(401).send(errors.array())
+            }
+
+            const agenda = await Agenda.create(req.body);
+
+            return res.status(201).send(agenda)
+        } catch (err) {
+            return res.status(500).send({ error: "Something went wrong" })
+
         }
-
-        const agenda = await Agenda.create(req.body);
-
-        return res.status(201).send(agenda)
-
     })
 
 
