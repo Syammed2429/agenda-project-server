@@ -10,6 +10,13 @@ const port = process.env.PORT || 2924;
 const app = express();
 
 app.use(express.json());
+
 //Using cors to prevent from the cors errors
 app.use(cors());
+
+//export the app and port 
+module.exports = {
+    app,
+    port
+}
 
