@@ -18,4 +18,5 @@ const agendaSchema = new mongoose.Schema({
 //Creating a new model
 const Agenda = mongoose.model('agenda', agendaSchema);
 
-// title, description, statue, date, created at, updated at, etc
+//exporting the model
+modules.exports = Agenda;
