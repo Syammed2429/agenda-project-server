@@ -11,11 +11,17 @@ This project was built using these technologies.
 - NodeJS
 - Deployed on Railway
 
-<a link="https://github.com/kerrybli/agenda-project-client">FrontEnd (Client) Link </a>
+<a href="https://github.com/kerrybli/agenda-project-client">FrontEnd (Client) Link </a>
 
 ### 🛠 Installation and Setup Instructions
 
 To get started just clone this repository. You will need `node.js` and `git` installed globally on your machine.
+
+Clone the repo
+
+```
+git clone https://github.com/kerrybli/agenda-project-server.git
+```
 
 Run
 
